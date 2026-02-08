@@ -176,7 +176,7 @@ if st.session_state.mode:
         if "Amoxicillin" in selected_drugs:
             st.write(f"**Amoxicillin:** {amoxicillin_dose:.2f} mg BID")
         if "Apoquel" in selected_drugs:
-            st.write(f"**Apoquel:** {apoquel_low:.2f} - {apoquel_high:.2f} mg SID or as directed by DVM"      
+            st.write(f"**Apoquel:** {apoquel_low:.2f} - {apoquel_high:.2f} mg SID or as directed by DVM")     
         if "Atropine" in selected_drugs:
             st.write(f"**Atropine:** {atropine_dose:.2f} mL")
         if "Baytril (oral)" in selected_drugs:
@@ -279,5 +279,6 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
