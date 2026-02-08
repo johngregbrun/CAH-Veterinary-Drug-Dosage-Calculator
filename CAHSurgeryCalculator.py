@@ -14,12 +14,12 @@ if p_name == "JG" and p_weight_lbs == 999.0 and p_age == 99.0:
 
 # Drug List
 complete_drug_list = [
-    "Adequan", "Alprazolam", "Aluminum Hydroxide", "Atropine", "Amoxi/Clav (tablets)", "Amoxi/Clav (suspension)",
+    "Adequan", "Alprazolam", "Aluminum Hydroxide", "Apoquel", "Atropine", "Amoxi/Clav (tablets)", "Amoxi/Clav (suspension)",
     "Amoxicillin", "Baytril (oral)", "Baytril (injection)", "Benazepril", "Buprenorphine", "Buspar (felines)",
     "Butorphanol", "Carprofen", "Cefpodoxime", "Cephalexin", "Cerenia (injection)", "Cerenia (tablets)",
     "Clavamox", "Clindamycin (capsules)", "Clindamycin (liquid)", "Convenia", "Cortrosyn (injection)",
     "Cough Tablets", "Dexamethasone-SP", "Diazepam", "Diphenhydramine (injection)", "Diphenhydramine (oral liquid)",
-    "Doxycycline", "Enalapril", "Furosemide (oral)", "Gabapentin (capsules)", "Gabapentin (liquid)", "Hydroxyzine (canine)", "Hydroxyzine (feline)",
+    "Doxycycline", "Enalapril", "Furosemide (oral)", "Gabapentin (capsules)", "Gabapentin (liquid)", "Galliprant", "Hydroxyzine (canine)", "Hydroxyzine (feline)",
     "Immiticide (injection)", "Meloxicam (tablets)", "Meloxicam (injection)", "Meloxicam (liquid)", "Methocarbamol",
     "Metronidazole", "Panacur (suspension)", "Percorten (injection)", "Prednisone", "Proin", "Propofol",
     "Strongid", "Telazol", "Trazadone", "Vetmedin", "Proheart 6", "Proheart 12"
@@ -76,6 +76,8 @@ if st.session_state.mode:
     amoxiclav_liquid_low = p_weight_kg * 15 / 91
     amoxiclav_liquid_high = p_weight_kg * 20 / 91
     amoxicillin_dose = p_weight_kg * 10
+    apoquel_low = p_weight_kg * 0.4
+    apoquel_high = p_weight_kg * 0.6
     baytril_oral_low = p_weight_kg * 5
     baytril_oral_high = p_weight_kg * 10
     baytril_injection_low = p_weight_kg * 2.5
@@ -106,10 +108,10 @@ if st.session_state.mode:
     enalapril_dose = p_weight_kg * 0.50
     furosemide_dose = p_weight_kg * 2
     gabapentin_low = p_weight_kg * 5
-    gabapentin_medium = p_weight_kg * 10
-    gabapentin_max = p_weight_kg * 20
+    gabapentin_high = p_weight_kg * 10
     gabapentin_liquid_low = p_weight_kg * 5 / 50
     gabapentin_liquid_high = p_weight_kg * 10 / 50
+    galliprant_dose = p_weight_kg * 2
     hydroxyzine_canine = p_weight_kg * 2
     hydroxyzine_feline_low = p_weight_kg * 5
     hydroxyzine_feline_high = p_weight_kg * 10
@@ -173,6 +175,8 @@ if st.session_state.mode:
             st.write(f"**Amoxi/Clav (suspension):** {amoxiclav_liquid_low:.2f} - {amoxiclav_liquid_high:.2f} mL BID")
         if "Amoxicillin" in selected_drugs:
             st.write(f"**Amoxicillin:** {amoxicillin_dose:.2f} mg BID")
+        if "Apoquel" in selected_drugs:
+            st.write(f"**Apoquel:** {apoquel_low:.2f} - {apoquel_high:.2f} mg SID or as directed by DVM"      
         if "Atropine" in selected_drugs:
             st.write(f"**Atropine:** {atropine_dose:.2f} mL")
         if "Baytril (oral)" in selected_drugs:
@@ -228,9 +232,11 @@ if st.session_state.mode:
         if "Furosemide (oral)" in selected_drugs:
             st.write(f"**Furosemide (oral):** {furosemide_dose:.2f} mL as directed by DVM")
         if "Gabapentin (capsules)" in selected_drugs:
-            st.write(f"**Gabapentin (capsules):** {gabapentin_low:.2f} mg (low) - {gabapentin_medium:.2f} mg (med) - {gabapentin_max:.2f} mg (high) BID")
+            st.write(f"**Gabapentin (capsules):** {gabapentin_low:.2f} mg (low) - {gabapentin_high:.2f} mg (high) BID")
         if "Gabapentin (liquid)" in selected_drugs:
             st.write(f"**Gabapentin (liquid):** {gabapentin_liquid_low:.2f} mL (low) - {gabapentin_liquid_high:.2f} mL (high) BID")
+        if "Galliprant" in selected_drugs:
+            st.write(f"**Galliprant):** {galliprant_dose:.2f} mg")
         if "Hydroxyzine (canine)" in selected_drugs:
             st.write(f"**Hydroxyzine (canine):** {hydroxyzine_canine:.2f} mg")
         if "Hydroxyzine (feline)" in selected_drugs:
@@ -273,4 +279,5 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
