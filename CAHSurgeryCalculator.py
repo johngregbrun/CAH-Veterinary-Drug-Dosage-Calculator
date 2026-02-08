@@ -11,7 +11,6 @@ if p_name == "JG" and p_weight_lbs == 999.0 and p_age == 99.0:
     st.balloons()
     st.image("JG and Ethan.jpg", caption="Made by JG :)", width=300)
 
-st.subheader("Configuration")
 
 # Drug List
 complete_drug_list = [
@@ -49,7 +48,7 @@ with col2:
 # Logic
 if st.session_state.mode:
 
-    # 1. Base Calculations
+    # Basic Weight Calculations and Conversions
     p_weight_float = p_weight_lbs
     p_age_int = int(p_age)
     p_weight_kg = p_weight_float / 2.2
@@ -157,7 +156,7 @@ if st.session_state.mode:
 
     # Selected Drugs Mode
     elif st.session_state.mode == "Selected Drugs":
-        st.subheader(f"Drug dosages for {p_name or 'Patient'}")
+        st.subheader(f"Drug Dosages for {p_name or 'Patient'}")
 
         if not selected_drugs:
             st.warning("Please select at least one drug from the dropdown above.")
@@ -274,3 +273,4 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
