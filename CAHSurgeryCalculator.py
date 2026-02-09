@@ -1,7 +1,6 @@
 import streamlit as st
 
 
-st.title("CAH Veterinary Drug Dosage Calculator")
 
 # Definitions, Inputs, and Values
 p_name = st.sidebar.text_input("Enter patient's name:")
@@ -15,9 +14,9 @@ if is_secret_mode:
     st.balloons()
     st.image("JG and Ethan.jpg", caption="Made by JG :)", width=300)
 else:
-    st.image("CAH Logo.jpg", width=200)
+    st.image("CAH Logo.jpg", width=500)
 
-# --- APP TITLE ---
+
 st.title("CAH Veterinary Drug Dosage Calculator")
 
 
@@ -288,6 +287,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
