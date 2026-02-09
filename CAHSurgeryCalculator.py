@@ -14,7 +14,6 @@ is_secret_mode = (p_name == "JG" and p_weight_lbs == 999.0 and p_age == 99.0)
 if is_secret_mode:
     st.balloons()
     st.image("JG and Ethan.jpg", caption="Made by JG :)", width=300)
-    st.success("
 else:
     st.image("CAH Logo.jpg", width=200)
 
@@ -289,6 +288,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
