@@ -8,9 +8,18 @@ p_name = st.sidebar.text_input("Enter patient's name:")
 p_weight_lbs = st.sidebar.number_input("Enter patient's weight in pounds:", min_value=0.0, step=0.1)
 p_age = st.sidebar.number_input("Enter patient's age in years:", min_value=0.0, step=0.5)
 
-if p_name == "JG" and p_weight_lbs == 999.0 and p_age == 99.0:
+
+is_secret_mode = (p_name == "JG" and p_weight_lbs == 999.0 and p_age == 99.0)
+
+if is_secret_mode:
     st.balloons()
     st.image("JG and Ethan.jpg", caption="Made by JG :)", width=300)
+    st.success("
+else:
+    st.image("CAH Logo.jpg", width=200)
+
+# --- APP TITLE ---
+st.title("CAH Veterinary Drug Dosage Calculator")
 
 
 # Drug List
@@ -280,6 +289,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
