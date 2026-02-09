@@ -236,7 +236,7 @@ if st.session_state.mode:
         if "Gabapentin (liquid)" in selected_drugs:
             st.write(f"**Gabapentin (liquid):** {gabapentin_liquid_low:.2f} mL (low) - {gabapentin_liquid_high:.2f} mL (high) BID")
         if "Galliprant" in selected_drugs:
-            st.write(f"**Galliprant):** {galliprant_dose:.2f} mg")
+            st.write(f"**Galliprant:** {galliprant_dose:.2f} mg")
         if "Hydroxyzine (canine)" in selected_drugs:
             st.write(f"**Hydroxyzine (canine):** {hydroxyzine_canine:.2f} mg")
         if "Hydroxyzine (feline)" in selected_drugs:
@@ -279,6 +279,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
