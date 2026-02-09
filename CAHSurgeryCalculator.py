@@ -30,7 +30,7 @@ complete_drug_list = [
     "Doxycycline", "Enalapril", "Furosemide (oral)", "Gabapentin (capsules)", "Gabapentin (liquid)", "Galliprant", "Hydroxyzine (canine)", "Hydroxyzine (feline)",
     "Immiticide (injection)", "Meloxicam (tablets)", "Meloxicam (injection)", "Meloxicam (liquid)", "Methocarbamol",
     "Metronidazole", "Panacur (suspension)", "Percorten (injection)", "Prednisone", "Proin", "Propofol",
-    "Strongid", "Telazol", "Trazadone", "Vetmedin", "Proheart 6", "Proheart 12"
+    "Strongid", "Telazol", "Trazadone", "Vetmedin", "ProHeart 6", "ProHeart 12"
 ]
 
 selected_drugs = st.multiselect(
@@ -279,14 +279,15 @@ if st.session_state.mode:
             st.write(f"**Trazadone:** {trazadone_dose:.2f} mg BID")
         if "Vetmedin" in selected_drugs:
             st.write(f"**Vetmedin:** {vetmedin_dose:.2f} mg as directed by DVM")
-        if "Proheart 6" in selected_drugs:
-            st.write(f"**Proheart 6:** {proheart_6_dose:.2f} mL")
-        if "Proheart 12" in selected_drugs:
-            st.write(f"**Proheart 12:** {proheart_12_dose:.2f} mL")
+        if "ProHeart 6" in selected_drugs:
+            st.write(f"**ProHeart 6:** {proheart_6_dose:.2f} mL")
+        if "ProHeart 12" in selected_drugs:
+            st.write(f"**ProHeart 12:** {proheart_12_dose:.2f} mL")
 
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
