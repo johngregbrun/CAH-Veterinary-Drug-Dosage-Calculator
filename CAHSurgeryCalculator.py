@@ -1,21 +1,5 @@
 import streamlit as st
 
-st.markdown("""
-    <style>
-    div.stButton > button:first-child {
-        background-color: #732672;
-        color: white;
-        border-radius: 20px;
-        border: none;
-    }
-
-    div.stButton > button:first-child:hover {
-        background-color: #5a1e59;
-        color: white;
-        border: none;
-    }
-    </style>
-""", unsafe_allow_html=True)
 
 st.title("CAH Veterinary Drug Dosage Calculator")
 
@@ -296,6 +280,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
