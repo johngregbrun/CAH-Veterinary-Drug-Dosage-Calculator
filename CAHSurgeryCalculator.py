@@ -14,7 +14,7 @@ if is_secret_mode:
     st.balloons()
     st.image("JG and Ethan.jpg", caption="Made by JG :)", width=300)
 else:
-    st.image("CAH Logo.jpg", width=500)
+    st.image("CAH Logo.jpg", width=600)
 
 
 st.title("CAH Veterinary Drug Dosage Calculator")
@@ -287,6 +287,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
