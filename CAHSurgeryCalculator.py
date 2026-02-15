@@ -282,7 +282,7 @@ if st.session_state.mode:
         if "Trazadone" in selected_drugs:
             st.write(f"**Trazadone:** {trazadone_dose:.2f} mg BID")
         if "Vetmedin" in selected_drugs:
-            st.write(f"**Vetmedin:** {vetmedin_q12h_dose:.2f} mg q12h for a total daily dose of {vetmedin_total_dose:.2f} mg or as directed by DVM")
+            st.write(f"**Vetmedin:** {vetmedin_q12h_dose:.2f} mg q12h for a total daily dose of {vetmedin_total_daily_dose:.2f} mg or as directed by DVM")
         if "ProHeart 6" in selected_drugs:
             st.write(f"**ProHeart 6:** {proheart_6_dose:.2f} mL")
         if "ProHeart 12" in selected_drugs:
@@ -291,6 +291,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
