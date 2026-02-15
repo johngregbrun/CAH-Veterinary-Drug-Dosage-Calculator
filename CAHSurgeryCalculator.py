@@ -29,7 +29,7 @@ complete_drug_list = [
     "Cough Tablets", "Dexamethasone-SP", "Diazepam", "Diphenhydramine (injection)", "Diphenhydramine (oral liquid)",
     "Doxycycline", "Enalapril", "Furosemide (oral)", "Gabapentin (capsules)", "Gabapentin (liquid)", "Galliprant", "Hydroxyzine (canine)", "Hydroxyzine (feline)",
     "Immiticide (injection)", "Meloxicam (tablets)", "Meloxicam (injection)", "Meloxicam (liquid)", "Methocarbamol",
-    "Metronidazole", "Panacur (suspension)", "Percorten (injection)", "Prednisone", "Proin", "Propofol",
+    "Metronidazole", "Ondansetron (injection)", "Panacur (suspension)", "Percorten (injection)", "Prednisone", "Proin", "Propofol",
     "Strongid", "Telazol", "Trazadone", "Vetmedin", "ProHeart 6", "ProHeart 12"
 ]
 
@@ -130,6 +130,7 @@ if st.session_state.mode:
     methocarbomol_high = p_weight_kg * 20
     metronidazole_low = p_weight_kg * 10
     metronidazole_high = p_weight_kg * 15
+    ondansetron_dose = p_weight_kg * 0.20 / 2
     panacur_liquid_dose = p_weight_float / 5
     percorten_dose = p_weight_float
     prednisone_low = p_weight_kg * 0.25
@@ -137,7 +138,8 @@ if st.session_state.mode:
     proin_dose = p_weight_float * 0.90
     strongid_dose = p_weight_float / 10
     trazadone_dose = p_weight_kg * 7
-    vetmedin_dose = p_weight_kg * 0.50
+    vetmedin_q12h_dose = p_weight_kg * 0.25
+    vetmedin_total_daily_dose = p_weight_kg * 0.50
     proheart_6_dose = p_weight_kg * 0.05
     proheart_12_dose = p_weight_kg * 0.05
 
@@ -238,7 +240,7 @@ if st.session_state.mode:
         if "Enalapril" in selected_drugs:
             st.write(f"**Enalapril:** {enalapril_dose:.2f} mg as directed by DVM")
         if "Furosemide (oral)" in selected_drugs:
-            st.write(f"**Furosemide (oral):** {furosemide_dose:.2f} mL as directed by DVM")
+            st.write(f"**Furosemide (oral):** {furosemide_dose:.2f} mg as directed by DVM")
         if "Gabapentin (capsules)" in selected_drugs:
             st.write(f"**Gabapentin (capsules):** {gabapentin_low:.2f} mg (low) - {gabapentin_high:.2f} mg (high) BID")
         if "Gabapentin (liquid)" in selected_drugs:
@@ -246,9 +248,9 @@ if st.session_state.mode:
         if "Galliprant" in selected_drugs:
             st.write(f"**Galliprant:** {galliprant_dose:.2f} mg")
         if "Hydroxyzine (canine)" in selected_drugs:
-            st.write(f"**Hydroxyzine (canine):** {hydroxyzine_canine:.2f} mg")
+            st.write(f"**Hydroxyzine (canine):** {hydroxyzine_canine:.2f} mg BID")
         if "Hydroxyzine (feline)" in selected_drugs:
-            st.write(f"**Hydroxyzine (feline):** {hydroxyzine_feline_low:.2f} - {hydroxyzine_feline_high:.2f} mg")
+            st.write(f"**Hydroxyzine (feline):** {hydroxyzine_feline_low:.2f} - {hydroxyzine_feline_high:.2f} mg BID")
         if "Immiticide (injection)" in selected_drugs:
             st.write(f"**Immiticide (injection):** {immiticide_dose:.2f} mL")
         if "Meloxicam (tablets)" in selected_drugs:
@@ -261,6 +263,8 @@ if st.session_state.mode:
             st.write(f"**Methocarbamol:** {methocarbomol_low:.2f} - {methocarbomol_high:.2f} mg BID")
         if "Metronidazole" in selected_drugs:
             st.write(f"**Metronidazole:** {metronidazole_low:.2f} - {metronidazole_high:.2f} mg BID")
+        if "Ondansetron (injection)" in selected_drugs:
+            st.write(f"**Ondansetron (injection):** {ondansetron_dose:.2f} mL or as directed by DVM")
         if "Panacur (suspension)" in selected_drugs:
             st.write(f"**Panacur (suspension):** {panacur_liquid_dose:.2f} mL SID for 3 days (patient < 6 months)")
         if "Percorten (injection)" in selected_drugs:
@@ -278,7 +282,7 @@ if st.session_state.mode:
         if "Trazadone" in selected_drugs:
             st.write(f"**Trazadone:** {trazadone_dose:.2f} mg BID")
         if "Vetmedin" in selected_drugs:
-            st.write(f"**Vetmedin:** {vetmedin_dose:.2f} mg as directed by DVM")
+            st.write(f"**Vetmedin:** {vetmedin_q12h_dose:.2f} mg q12h for a total daily dose of {vetmedin_total_dose:.2f} mg or as directed by DVM")
         if "ProHeart 6" in selected_drugs:
             st.write(f"**ProHeart 6:** {proheart_6_dose:.2f} mL")
         if "ProHeart 12" in selected_drugs:
@@ -287,6 +291,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
