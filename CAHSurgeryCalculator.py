@@ -22,11 +22,11 @@ st.title("CAH Veterinary Drug Dosage Calculator")
 
 # Drug List
 complete_drug_list = [
-    "Adequan", "Alprazolam", "Aluminum Hydroxide", "Apoquel", "Atropine", "Amoxi/Clav (tablets)", "Amoxi/Clav (suspension)",
+    "Adequan", "Alprazolam", "Aluminum Hydroxide", "Apoquel", "Atipamezole (injection)", "Atropine", "Amoxi/Clav (tablets)", "Amoxi/Clav (suspension)",
     "Amoxicillin", "Baytril (oral)", "Baytril (injection)", "Benazepril", "Buprenorphine", "Buspar (felines)",
     "Butorphanol", "Carprofen", "Cefpodoxime", "Cephalexin", "Cerenia (injection)", "Cerenia (tablets)",
     "Clavamox", "Clindamycin (capsules)", "Clindamycin (liquid)", "Convenia", "Cortrosyn (injection)",
-    "Cough Tablets", "Dexamethasone-SP", "Diazepam", "Diphenhydramine (injection)", "Diphenhydramine (oral liquid)",
+    "Cough Tablets", "Dexmedetomidine (injection)", "Dexamethasone-SP", "Diazepam", "Diphenhydramine (injection)", "Diphenhydramine (oral liquid)",
     "Doxycycline", "Enalapril", "Furosemide (oral)", "Gabapentin (capsules)", "Gabapentin (liquid)", "Galliprant", "Hydroxyzine (canine)", "Hydroxyzine (feline)",
     "Immiticide (injection)", "Meloxicam (tablets)", "Meloxicam (injection)", "Meloxicam (liquid)", "Methocarbamol",
     "Metronidazole", "Ondansetron (injection)", "Panacur (suspension)", "Percorten (injection)", "Prednisone", "Proin", "Propofol",
@@ -64,9 +64,13 @@ if st.session_state.mode:
     # Drug Calculations
 
     # PreMed / Surgery
+    atipamezole_dose = p_weight_kg * 0.003
     atropine_dose = p_weight_float / 40
     butorphanol_dose = p_weight_float / 100
+    butorphanol_with_dex_dose = p_weight_kg * 0.4
     diazepam_dose = p_weight_float * 0.1 / 5
+    dexmedetomidine_initial_dose = p_weight_kg * 0.003
+    dexmedetomidine_max_dose = p_weight_kg * 0.01
     propofol_dose = p_weight_float * 2 / 10
     telazol_dose = p_weight_float / 100
     meloxicam_dose = p_weight_kg * 0.2 / 5
@@ -166,6 +170,11 @@ if st.session_state.mode:
             st.write(f"**Buprenorphine:** {buprenorphine_low:.2f} mL (low) - {buprenorphine_high:.2f} mL (high)")
             st.write(f"**Cerenia:** {cerenia_dose:.2f} mL")
 
+        st.subheader("Quick Sedation")
+            st.write(f"**Dexmedetomidine:** initial dose of {dexmedetomidine_initial_dose:.3f} mL with a max dose of {dexmedetomidine_max_dose:.2f} mL")
+            st.write(f"**Butorphanol:** {butorphanol_with_dex_dose:.2f} mL")
+            st.write(f"**Atipamezole:** {atipamezole_dose:.3f} mL")
+
     # Selected Drugs Mode
     elif st.session_state.mode == "Selected Drugs":
         st.subheader(f"Drug Dosages for {p_name or 'Patient'}")
@@ -186,7 +195,9 @@ if st.session_state.mode:
         if "Amoxicillin" in selected_drugs:
             st.write(f"**Amoxicillin:** {amoxicillin_dose:.2f} mg BID")
         if "Apoquel" in selected_drugs:
-            st.write(f"**Apoquel:** {apoquel_low:.2f} - {apoquel_high:.2f} mg SID or as directed by DVM")     
+            st.write(f"**Apoquel:** {apoquel_low:.2f} - {apoquel_high:.2f} mg SID or as directed by DVM")  
+        if "Atipamezole (injection)" in selected_drugs:
+            st.write(f"**Atipamezole (injection):** {atipamezole_dose:.3f} mL")
         if "Atropine" in selected_drugs:
             st.write(f"**Atropine:** {atropine_dose:.2f} mL")
         if "Baytril (oral)" in selected_drugs:
@@ -229,6 +240,8 @@ if st.session_state.mode:
                  st.write(f"**Cough Tablets:** {cough_tablet_large}")
         if "Dexamethasone-SP" in selected_drugs:
             st.write(f"**Dexamethasone-SP:** {dexamethasonesp_dose:.2f} mL")
+        if "Dexmedetomidine (injection)" in selected_drugs:
+             st.write(f"**Dexmedetomidine:** initial dose of {dexmedetomidine_initial_dose:.3f} mL with a max dose of {dexmedetomidine_max_dose:.2f} mL")
         if "Diazepam" in selected_drugs:
             st.write(f"**Diazepam:** {diazepam_dose:.2f} mL")
         if "Diphenhydramine (injection)" in selected_drugs:
@@ -291,6 +304,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
