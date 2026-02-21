@@ -171,9 +171,9 @@ if st.session_state.mode:
             st.write(f"**Cerenia:** {cerenia_dose:.2f} mL")
 
         st.subheader("Quick Sedation")
-            st.write(f"**Dexmedetomidine:** initial dose of {dexmedetomidine_initial_dose:.3f} mL with a max dose of {dexmedetomidine_max_dose:.2f} mL")
-            st.write(f"**Butorphanol:** {butorphanol_with_dex_dose:.2f} mL")
-            st.write(f"**Atipamezole:** {atipamezole_dose:.3f} mL")
+        st.write(f"**Dexmedetomidine:** initial dose of {dexmedetomidine_initial_dose:.3f} mL with a max dose of {dexmedetomidine_max_dose:.2f} mL")
+        st.write(f"**Butorphanol:** {butorphanol_with_dex_dose:.2f} mL")
+        st.write(f"**Atipamezole:** {atipamezole_dose:.3f} mL")
 
     # Selected Drugs Mode
     elif st.session_state.mode == "Selected Drugs":
@@ -304,6 +304,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
