@@ -67,7 +67,7 @@ if st.session_state.mode:
     atipamezole_dose = p_weight_kg * 0.003
     atropine_dose = p_weight_float / 40
     butorphanol_dose = p_weight_float / 100
-    butorphanol_with_dex_dose = p_weight_kg * 0.04
+    butorphanol_with_dex_dose = p_weight_kg * 0.4 / 10
     diazepam_dose = p_weight_float * 0.1 / 5
     dexmedetomidine_initial_dose = p_weight_kg * 0.003
     dexmedetomidine_max_dose = p_weight_kg * 0.01
@@ -173,7 +173,7 @@ if st.session_state.mode:
         st.subheader("Quick Sedation")
         st.write(f"**Dexmedetomidine:** initial dose of {dexmedetomidine_initial_dose:.3f} mL with a max dose of {dexmedetomidine_max_dose:.2f} mL")
         st.write(f"**Butorphanol:** {butorphanol_with_dex_dose:.2f} mL")
-        st.write(f"**Atipamezole:** {atipamezole_dose:.3f} mL")
+        st.write("dose is the same as the amount of dexmedetomidine given (reversal agent)")
 
     # Selected Drugs Mode
     elif st.session_state.mode == "Selected Drugs":
@@ -304,6 +304,7 @@ if st.session_state.mode:
 st.divider()
 
 st.warning("⚠️ DISCLAIMER: For reference only. Always get DVM approval before administration.")
+
 
 
 
