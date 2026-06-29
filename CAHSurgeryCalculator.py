@@ -27,7 +27,7 @@ complete_drug_list = [
     "Butorphanol", "Carprofen", "Cefpodoxime", "Cephalexin", "Cerenia (injection)", "Cerenia (tablets)",
     "Clavamox", "Clindamycin (capsules)", "Clindamycin (liquid)", "Convenia", "Cortrosyn (injection)",
     "Cough Tablets", "Dexmedetomidine (injection)", "Dexamethasone-SP", "Diazepam", "Diphenhydramine (injection)", "Diphenhydramine (oral liquid)",
-    "Doxycycline", "Enalapril", "Furosemide (oral)", "Gabapentin (capsules)", "Gabapentin (liquid)", "Galliprant", "Hydroxyzine (canine)", "Hydroxyzine (feline)",
+    "Doxycycline", "Enalapril", "Furosemide (oral)", "Gabapentin (capsules)", "Gabapentin (liquid)", "Galliprant", "Glycopyrrolate", "Hydroxyzine (canine)", "Hydroxyzine (feline)",
     "Immiticide (injection)", "Meloxicam (tablets)", "Meloxicam (injection)", "Meloxicam (liquid)", "Methocarbamol",
     "Metronidazole", "Ondansetron (injection)", "Panacur (suspension)", "Percorten (injection)", "Prednisone", "Proin", "Propofol",
     "Strongid", "Telazol", "Trazadone", "Vetmedin", "ProHeart 6", "ProHeart 12"
@@ -77,6 +77,8 @@ if st.session_state.mode:
     buprenorphine_low = p_weight_kg * 0.005 / 0.3
     buprenorphine_high = p_weight_kg * 0.02 / 0.3
     cerenia_dose = p_weight_float / 22
+    glycopyrrolate_min_dose = p_weight_float * 0.005 / 0.2
+    glycopyrrolate_max_dose = p_weight_float * 0.01 / 0.2
 
     # Extended List Formulas
     adequan_dose = p_weight_kg * 4.4 / 100
@@ -160,6 +162,7 @@ if st.session_state.mode:
             st.write(f"**Telazol:** {telazol_dose:.2f} mL")
             st.write(f"**Meloxicam:** {meloxicam_dose:.2f} mL")
             st.write(f"**Buprenorphine:** {buprenorphine_low:.2f} mL (low) - {buprenorphine_high:.2f} mL (high)")
+            st.write(f"**Glycopyrrolate:** {glycopyrrolate_min_dose:.2f} mL (low) - {glycopyrrolate_max_dose:.2f} mL (high)")
             st.write(f"**Cerenia:** {cerenia_dose:.2f} mL")
         else:
             st.write(f"**Atropine:** {atropine_dose:.2f} mL")
@@ -168,6 +171,7 @@ if st.session_state.mode:
             st.write(f"**Propofol:** {propofol_dose:.2f} mL")
             st.write(f"**Meloxicam:** {meloxicam_dose:.2f} mL")
             st.write(f"**Buprenorphine:** {buprenorphine_low:.2f} mL (low) - {buprenorphine_high:.2f} mL (high)")
+            st.write(f"**Glycopyrrolate:** {glycopyrrolate_min_dose:.2f} mL (low) - {glycopyrrolate_max_dose:.2f} mL (high)")
             st.write(f"**Cerenia:** {cerenia_dose:.2f} mL")
 
         st.subheader("Quick Sedation")
@@ -260,6 +264,8 @@ if st.session_state.mode:
             st.write(f"**Gabapentin (liquid):** {gabapentin_liquid_low:.2f} mL (low) - {gabapentin_liquid_high:.2f} mL (high) BID")
         if "Galliprant" in selected_drugs:
             st.write(f"**Galliprant:** {galliprant_dose:.2f} mg")
+        if "Glycopyrrolate" in selected_drugs:
+            st.write(f"**Glycopyrrolate:** {glycopyrrolate_min_dose:.2f} mL (low) - {glycopyrrolate_max_dose:.2f} mL (high)")
         if "Hydroxyzine (canine)" in selected_drugs:
             st.write(f"**Hydroxyzine (canine):** {hydroxyzine_canine:.2f} mg BID")
         if "Hydroxyzine (feline)" in selected_drugs:
