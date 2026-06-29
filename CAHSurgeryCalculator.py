@@ -77,8 +77,8 @@ if st.session_state.mode:
     buprenorphine_low = p_weight_kg * 0.005 / 0.3
     buprenorphine_high = p_weight_kg * 0.02 / 0.3
     cerenia_dose = p_weight_float / 22
-    glycopyrrolate_min_dose = p_weight_float * 0.005 / 0.2
-    glycopyrrolate_max_dose = p_weight_float * 0.01 / 0.2
+    glycopyrrolate_min_dose = p_weight_kg * 0.005 / 0.2
+    glycopyrrolate_max_dose = p_weight_kg * 0.01 / 0.2
 
     # Extended List Formulas
     adequan_dose = p_weight_kg * 4.4 / 100
